@@ -5,7 +5,6 @@ The service should accept either:
 · Shapefile
 · KML
 
-You can view the live deployment here: https://geospatial-file-measurement-api-xi.vercel.app/
 ## Setup
 
 Needs Python 3.10 or newer.
@@ -132,3 +131,11 @@ Area and length are never calculated in degrees, because a degree of longitude c
 - Store results in PostgreSQL/PostGIS and add paging and filtering.
 - Move processing to a background worker with status polling for large files.
 - Upload size limits and authentication.
+
+## Demonstration of the project:
+
+
+https://github.com/user-attachments/assets/296f0dd0-b69c-4c03-9c5e-20298d474438
+
+
+
