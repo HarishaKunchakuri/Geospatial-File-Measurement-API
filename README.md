@@ -5,6 +5,7 @@ The service should accept either:
 · Shapefile
 · KML
 
+You can view the live deployment here: https://geospatial-file-measurement-api-xi.vercel.app/
 ## Setup
 
 Needs Python 3.10 or newer.
