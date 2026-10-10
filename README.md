@@ -50,7 +50,7 @@ curl -F "file=@samples/parcels.kml" http://127.0.0.1:8000/api/files/
 }
 ```
 
-### Measurements
+### Measurements:
 
 The measurements output will be shown when file is uploaded in "http://127.0.0.1:8000" in table format. The result can be downloaded in json or csv file.
 
@@ -67,7 +67,7 @@ The measurements output will be shown when file is uploaded in "http://127.0.0.1
 Geometry types that can't be measured (for example a GeometryCollection) come back with a
 `note` instead of an error.
 
-## Architecture
+## Architecture:
 
 ```
 app/main.py              HTTP endpoints, saving uploads, reading and writing result files
@@ -83,7 +83,7 @@ API layer (main.py): receives requests, validates them, calls the processing lay
 Processing layer (geo.py): reads files and calculates measurements. It knows nothing about HTTP, so it can be tested on its own.
 
 
-**File processing.** 
+**File processing:** 
 1. The client sends POST /api/files/ with a .zip or .kml file.
 2. The API rejects any other extension with 415.
 3. It creates a unique id and saves the file to data/{id}/.
@@ -94,7 +94,7 @@ Processing layer (geo.py): reads files and calculates measurements. It knows not
 8. The API returns the file information: id, filename, feature count, CRS and status.
 If reading fails, the status is saved as FAILED and the API returns 422 with the reason.
 
-**Measurement.** 
+**Measurement:** 
 For each feature, measure() works by geometry type:
   Polygon or MultiPolygon: calculate the area in square metres.  
   LineString or MultiLineString: calculate the length in metres.
@@ -107,10 +107,10 @@ For polygons and lines, the steps are:
 3. Transform the geometry to that UTM zone, where units are metres.
 4. Read the area or length from the projected geometry.
 
-**CRS handling.** 
+**CRS handling:** 
 Area and length are never calculated in degrees, because a degree of longitude covers a different distance at every latitude. The CRS of each feature is stored with it. Files in any CRS work, because the first step is always a conversion to WGS84.
 
-## Design decisions
+## Design decisions:
 
 - **JSON files instead of a database.** The data is write-once and read-many, and a
   per-upload JSON file keeps setup to zero. The cost is that listing and filtering don't
@@ -119,7 +119,7 @@ Area and length are never calculated in degrees, because a degree of longitude c
   of normal survey size.
 - **FastAPI over Django.** Less boilerplate for a small API, and automatic `/docs`.
 
-## What I learned
+## What I learned:
 
 - Shapefile and KML differ in how they carry CRS: KML is implicitly WGS84, a shapefile
   depends on a sidecar `.prj` that is easy to lose.
@@ -127,7 +127,7 @@ Area and length are never calculated in degrees, because a degree of longitude c
   projected step is not optional.
 - Zip uploads need checking before extraction.
 
-## Future scope
+## Future scope:
 
 - Store results in PostgreSQL/PostGIS and add paging and filtering.
 - Move processing to a background worker with status polling for large files.
