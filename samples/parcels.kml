@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Sample parcels</name>
+    <Folder>
+      <name>Parcels</name>
+      <Placemark>
+        <name>Parcel 1</name>
+        <description>Roughly 1.2 ha plot</description>
+        <Polygon><outerBoundaryIs><LinearRing><coordinates>
+          77.5900,12.9700,0 77.6000,12.9700,0 77.6000,12.9800,0 77.5900,12.9800,0 77.5900,12.9700,0
+        </coordinates></LinearRing></outerBoundaryIs></Polygon>
+      </Placemark>
+      <Placemark>
+        <name>Parcel 2 (with courtyard)</name>
+        <Polygon>
+          <outerBoundaryIs><LinearRing><coordinates>
+            77.6100,12.9700,0 77.6300,12.9700,0 77.6300,12.9900,0 77.6100,12.9900,0 77.6100,12.9700,0
+          </coordinates></LinearRing></outerBoundaryIs>
+          <innerBoundaryIs><LinearRing><coordinates>
+            77.6150,12.9750,0 77.6250,12.9750,0 77.6250,12.9850,0 77.6150,12.9850,0 77.6150,12.9750,0
+          </coordinates></LinearRing></innerBoundaryIs>
+        </Polygon>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Roads</name>
+      <Placemark>
+        <name>Access road</name>
+        <LineString><coordinates>
+          77.5800,12.9750,0 77.5900,12.9750,0 77.6100,12.9800,0 77.6400,12.9800,0
+        </coordinates></LineString>
+      </Placemark>
+    </Folder>
+    <Folder>
+      <name>Points</name>
+      <Placemark>
+        <name>Borewell</name>
+        <Point><coordinates>77.5950,12.9750,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
